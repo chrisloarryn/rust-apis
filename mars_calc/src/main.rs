@@ -1,21 +1,18 @@
 use std::io;
 
 fn main() {
+    println!("Enter your weight on Earth: ");
     let mut input = String::new();
 
-    io::stdin().read_line(&mut input);
+    io::stdin().read_line(&mut input).unwrap();
 
-    borrow_string(&input);
-    own_string(input);
-
-    // typed variables
-    // let weight_on_earth = 72.0;
-    // let weight_on_mars = calculate_weight_on_mars(weight_on_earth);
+    let weight_on_earth: f32 = input.trim().parse().unwrap();
+    dbg!(weight_on_earth);
+    let weight_on_mars = calculate_weight_on_mars(weight_on_earth);
 
     // cannot change the value of a variable once it is set, unless it is mutable
-    // weight_on_mars = 72.0;
 
-    // println!("Weight on Mars: {}kgen", weight_on_mars);
+    println!("Weight on Mars: {}kgen", weight_on_mars);
 }
 
 fn borrow_string(s: &String) {
